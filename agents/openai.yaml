@@ -1,0 +1,17 @@
+display_name: AI-FIRST Framework Validator
+short_description: Audit repository adherence to the AI-FIRST Framework using the mandatory checklist and authoritative references; output Status READY PARTIAL INVALID and RP-* remediation IDs.
+triggers:
+  - validate against AI-FIRST Framework
+  - audit framework adherence
+  - onboard repository to AI-FIRST
+  - source-of-truth compliance
+  - SoT drift
+  - framework validator
+default_prompt: |
+  Read SKILL.md. Treat references/validation-checklist.md as mandatory execution order (sections 0–15 in order).
+  Apply section 0.1 applicability for sections 1–11; then section 12 stop conditions (section_12_stop); then section 13 for Status READY | PARTIAL | INVALID (sole authority).
+  Treat references/structure-rules.md and references/sot-rules.md as blocking criteria where the checklist defers to them.
+  Map every remediation step to pattern IDs in references/remediation-patterns.md (RP-*).
+  The Source of Truth root is source-of-truth/ only; all SoT paths live under it.
+  Produce output exactly as SKILL.md Output contract: Status only as section 13; Confidence HIGH | MEDIUM | LOW per SKILL.md; blocking and non-blocking lists (APPLICABLE sections); determinism PASS if section 8 is NOT APPLICABLE or has zero BLOCKING failures, else FAIL; ordered remediation with RP-* IDs.
+  Do not invent rules outside references/ and SKILL.md.
